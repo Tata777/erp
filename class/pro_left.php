@@ -1,0 +1,88 @@
+<div class="main_left">
+      <div class="list_bt">Product list</div>
+              <div class="list">
+                 <ul>
+<script language="JavaScript">
+     <!--
+function ShowHideMenu(obj,n) {
+var i;
+
+// for(i=1;i<=n;i++){overMenu(obj);}
+
+	if(obj.style.display=="none")
+		obj.style.display="block";
+	else
+		obj.style.display="none";
+}
+
+function overMenu(obj) {
+
+
+		obj.style.display = "none";
+}
+
+
+
+
+function ShowHideMenuB(obj,n) {  
+var j;
+
+ //for(i=1;j<=n;i++){overMenuB(obj);}
+
+	if(obj.style.display=="none")
+		obj.style.display="block";
+	else
+		obj.style.display="none";
+}
+
+function overMenuB(obj) {
+
+
+		obj.style.display = "none";
+}
+
+
+//function ShowHideMenu2(obj,n) {
+
+//	if(Kav1.style.display=="none")
+//		eval("Kav1").style.display="block";
+//	else
+//		eval("Kav1").style.display="none";
+//}
+
+-->
+
+</script>
+  <?php	
+	$vm=$info->getProMenu(1);
+	if($vm){
+	foreach($vm as $key=>$value){
+		//if($value['SysProCategoryID'] != $_GET['hcateid'] ) continue;
+		
+		
+		$vmlist=$info->getProMenu($value['SysProCategoryID']);
+		if($vmlist){
+	 ?>
+                    <li> <a href="JavaScript:ShowHideMenu(m<?=$value['SysProCategoryID']?>);"><img src="images/dot1.jpg" />&nbsp;&nbsp;&nbsp;&nbsp;<?=$value['CateNameEn']?></a></li>    
+					
+		<? }else{?>
+		 			 <li> <a href="product.php?cateid=<?=$value['SysProCategoryID']?>"><img src="images/dot1.jpg" />&nbsp;&nbsp;&nbsp;&nbsp;<?=$value['CateNameEn']?></a></li>    
+		<? }?>			   
+		
+					<? // if($value['SysProCategoryID'] == 110 ) continue; ?>             
+					<li id="m<?=$value['SysProCategoryID']?>">
+					  <?php	
+					
+					if($vmlist){
+					foreach($vmlist as $key=>$val){
+					 ?>
+                    <a id="l2" href="product.php?cateid=<?=$val['SysProCategoryID']?>"><img src="images/dot2.jpg" />&nbsp;&nbsp;&nbsp;&nbsp;<?=$val['CateNameEn']?></a>
+ 					<? }}?>
+                    </li>
+					<? }}?>
+										<li><a href="news.php?cateid=113"><img src="images/dot1.jpg" />&nbsp;&nbsp;&nbsp;&nbsp;Energy solutions</a></li>
+
+					
+             </ul>
+             </div>
+   </div>

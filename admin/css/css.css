@@ -1,0 +1,90 @@
+A:link {
+	COLOR: #333333; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #666666; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.nav:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.nav:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.nav:active {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A.nav:hover {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+
+
+table,input,select{color:#666666;font-size:12px}
+
+
+BODY {
+   font-color:#333333; 
+   FONT-SIZE: 12px;
+   margin-top: 0px; 
+   margin-right: 0px; 
+   margin-bottom: 0px; 
+   margin-left: 0px;
+
+	scrollbar-3dlight-color:#9C9E9C;
+	scrollbar-arrow-color:#9C9E9C;
+	scrollbar-base-color:#EFEFEF;
+	scrollbar-darkshadow-color:#FFFFFF;
+	scrollbar-face-color:#EFEFEF; 
+	scrollbar-highlight-color:#FFFFFF;
+	scrollbar-shadow-color:#9C9E9C; 
+}
+
+
+
+textarea	{ font-family: "Courier New", "Courier"; font-size: 12px;  color: #000000; font-weight: normal; background-color: #F7F7EF }
+
+input,object	{ font-family: Tahoma, Verdana; font-size: 12px;  color: #000000; font-weight: normal; background-color: #F7F7EF }
+select			{ font-family: Arial; font-size: 12px;  color: #000000; font-weight: normal; background-color: #F7F7EF }
+
+
+.line11 {border-top: 1px none #CCCCCC;
+	border-right: 1px none #CCCCCC;
+	border-bottom: 1px dashed #CCCCCC;
+	border-left: 1px none #CCCCCC;
+	}
+
+
+.title1 {
+	color: #666666;
+	font-weight: bold;
+}
+
+.menu {  cursor:hand; behavior:url(css/menu.htc)}
+.menu1 {	
+    background-Color: #EAEAEA;
+	border-Left: 1px solid #000000;
+	border-Top: 1px solid #000000;
+	border-Right: 1px solid #000000;
+	border-Bottom: 1px solid #000000;
+	}
+	
+.bgtitle {	
+    background-Color: #F7F7EF;
+	}
+	
+.bgtitle1 {	
+    background-Color: #EFEFEF;
+	}
+		
+.bgwhite {
+    background-Color: #ffffff;
+}
+
+.bgborder {
+    background-Color: #ffffff;
+}

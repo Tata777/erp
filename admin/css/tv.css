@@ -1,0 +1,23 @@
+.TreeNode {
+	padding:0px;
+	margin:0px;
+}
+.TreeNode img { 
+	border:0px
+}
+.TreeNode a{ 
+	font:12px Arial ËÎÌו;
+	text-decoration:none;
+}
+.TreeNode span {
+	margin:0px 0px 0px 3px;
+}
+.TreeNode a.normal { 
+	padding:1px 2px 1px 2px;
+	color:#000000;
+	background-color:#FFFFFF;
+}
+.TreeNode a.selected { 
+	padding:1px 2px 1px 2px;
+	
+}

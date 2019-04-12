@@ -1,0 +1,157 @@
+<?
+	session_start();
+	require("../../class/mysqldb.inc.php");
+	$db=new mysqldb();
+	srand((double)microtime()*1000000);
+	$rand1 = rand(0,9);
+	$rand2 = rand(0,9);
+	$rand3 = rand(0,9);
+	$rand4 = rand(0,9);
+	$randval=$rand1.$rand2.$rand3.$rand4;
+	$verfycode=$randval;
+	$_SESSION['verfycode']=$verfycode;
+?>
+<link href="css/css.css" rel="stylesheet" type="text/css">
+<style type="text/css">
+<!--
+body,td,th {
+	font-size: 12px;
+	color: #CCCCCC;
+}
+-->
+</style>
+<SCRIPT src="../../js/checkuser.js"></SCRIPT>
+<script language="javascript">
+function chk()
+{
+		var keyselected ='';
+		
+		if(!check_empty(document.getElementById('username'),"请输入登陆用户名！")) return false;
+		if(!check_zhonglen(document.getElementById('username'),2,16,"登陆用户名长度不合法，长度应该为2-16个英文、数字或下划线 _ ，且以英文字母开头")) return false;
+		if(!check_qyname(document.getElementById('username'),"登陆用户名含有非法字符\n\n请按照说明注册，可以含有2-16个英文、数字或下划线 _ ，且以英文字母开头 ！")) return false;
+		if(!check_empty(document.getElementById('password'),"请输入登录密码！")) return false;
+		if(!check_zhonglen(document.getElementById('password'),4,16,"登录密码长度不合法，长度应该为4-16个字符")) return false;
+		if(document.getElementById('username').value==document.getElementById('password').value){
+		alert("登录用户名和密码不可以一样，为了您的账号安全，请修改！");
+		document.getElementById('password').value="";
+		document.getElementById('password1').value="";
+		document.getElementById('password').focus();
+		return false;
+		}
+		if(!check_empty(document.getElementById('password1'),"请输入确认密码！")) return false;
+		if(!check_even(document.getElementById('password'),document.getElementById('password1'),"登录密码和确认密码不一样")) return false;
+		if(!check_empty(document.getElementById('passalt'),"请输入密码提示！")) return false;
+		if(!check_empty(document.getElementById('passda'),"请输入提示答案！")) return false;
+		if(!check_empty(document.getElementById('name'),"请输入您的姓名！")) return false;
+		if(!check_istel(document.getElementById('phone'),"请输入正确的联系电话，只可以由数字和“/”和“-”组成！")) return false;
+		if (document.getElementById('post').value)
+		{
+			if(!check_isnum(document.getElementById('post'),"邮编只可以为数字")) return false;
+		}
+		if (document.getElementById('email').value)
+		{
+			if(!check_isemail(document.getElementById('email'),"电子邮箱")) return false;
+		}
+		if(!check_empty(document.getElementById('yancode'),"验证码不可以为空,请输入验证码")) return false;
+		return true;
+}
+</script>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+<table width="70%" border="0" align="center" cellpadding="0" cellspacing="0">
+                    <tr>
+                      <td height="143"><table width="100%" height="392" border="0" cellpadding="0" cellspacing="0">
+                        <form action="add_ok.php" method="post" name="reguser" id="reguser" onSubmit="return chk();">
+                          <tr>
+                            <td width="23%" height="32" align="left" style="padding-top:3px"><span class="txtColor01" style="padding-top:3px">用户名</span></td>
+                            <td width="36%" height="32" align="left"><input name="username" type="text" id="username" style="width:130px; height:17px" />
+                                <span class="requirefill">*</span> </td>
+                            <td width="41%" height="32" align="left" style="padding-top:3px"><span class="txtColor01">（登录网站时使用的代号，请记住该用户名。）
+                              <input name="action" type="hidden" id="action" value="save">
+                            </span></td>
+                          </tr>
+                          <tr>
+                            <td height="32" align="left" style="padding-top:3px"><span class="txtColor01" style="padding-top:3px">密码</span></td>
+                            <td height="32" align="left"><input name="password" type="password" id="password" style="width:130px; height:17px" />
+                                <span class="requirefill">*</span></td>
+                            <td height="32" align="left" style="padding-top:3px; padding-right:8px"><span class="txtColor01">（为了您的个人资料的安全，请您最好使用6位以上密码！） </span></td>
+                          </tr>
+                          <tr>
+                            <td height="32" align="left" style="padding-top:3px"><span class="txtColor01" style="padding-top:3px">确认密码</span></td>
+                            <td height="32" align="left"><input name="password1" type="password" id="password1" style="width:130px; height:17px" />
+                                <span class="requirefill">*</span></td>
+                            <td height="32" align="left" style="padding-top:3px; padding-right:8px"><span class="txtColor01">（必须和上面输入的密码一致！）</span></td>
+                          </tr>
+                          <tr>
+                            <td height="32" align="left" style="padding-top:3px"><span class="txtColor01" style="padding-top:3px">密码提示</span></td>
+                            <td height="32" align="left"><input name="passalt" type="text" id="passalt" style="width:130px; height:17px" />
+                                <span class="requirefill">*</span></td>
+                            <td height="32" align="left" style="padding-top:3px; padding-right:8px"><span class="txtColor01"> （例如：我的狗狗叫什么？） </span></td>
+                          </tr>
+                          <tr>
+                            <td height="32" align="left" style="padding-top:3px"><span class="txtColor01" style="padding-top:3px">提示答案</span></td>
+                            <td height="32" align="left"><input name="passda" type="text" id="passda" style="width:130px; height:17px" />
+                                <span class="requirefill">*</span></td>
+                            <td height="32" align="left" style="padding-top:3px; padding-right:8px"><span class="txtColor01">（例如 欢欢） </span></td>
+                          </tr>
+                          <tr>
+                            <td height="40" colspan="3" align="left" style="padding-top:3px"><span class="txt_04" style="padding-top:3px">以下为选填项目，填写后能方便我们更方便的联系您以便通知您最新消息</span></td>
+                          </tr>
+                          <tr>
+                            <td height="32" align="left" style="padding-top:3px"><span class="txtColor01" style="padding-top:3px">真实姓名 </span></td>
+                            <td height="32" align="left"><input name="name" type="text" id="name" style="width:130px; height:17px" />
+                                <span class="requirefill">*</span></td>
+                            <td height="32" align="left" style="padding-top:3px; padding-right:8px">&nbsp;</td>
+                          </tr>
+						                            <tr>
+                            <td height="32" align="left" style="padding-top:3px">性别</td>
+                            <td height="32" align="left">男
+                            <input name="sex" type="radio" value="0" id="sex" />
+                            &nbsp;女
+                            <input type="radio" name="sex" value="1" id="sex" />
+                            &nbsp;保密
+                            <input name="sex" type="radio" id="sex" value="2" checked />   
+                                <span class="requirefill">*</span></td>
+                            <td height="32" align="left" style="padding-top:3px; padding-right:8px">&nbsp;</td>
+                          </tr>
+
+                          <tr>
+                            <td height="32" align="left" style="padding-top:3px"><span class="txtColor01" style="padding-top:3px">所在城市</span></td>
+                            <td height="32" align="left"><input name="area" type="text" id="area" style="width:50px; height:17px" /></td>
+                            <td height="32" align="left" style="padding-top:3px; padding-right:8px"></td>
+                          </tr>
+						   <tr>
+                            <td height="32" align="left" style="padding-top:3px"><span class="txtColor01" style="padding-top:3px">联系电话</span></td>
+                            <td height="32" align="left"><input name="phone" type="text" id="phone" style="width:130px; height:17px" />
+                                <span class="requirefill">*</span></td>
+                            <td height="32" align="left" style="padding-top:3px; padding-right:8px"><span class="txtColor01">（例如：区号－号码）</span></td>
+                          </tr>
+
+                          <tr>
+                            <td height="32" align="left" style="padding-top:3px"><span class="txtColor01" style="padding-top:3px">邮编</span></td>
+                            <td height="32" align="left"><input name="post" type="text" id="post" style="width:130px; height:17px" /></td>
+                            <td height="32" align="left" style="padding-top:3px; padding-right:8px">&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td height="32" align="left" style="padding-top:3px"><span class="txtColor01" style="padding-top:3px">E-mail</span></td>
+                            <td height="32" align="left"><input name="email" type="text" id="email" style="width:130px; height:17px" /></td>
+                            <td height="32" align="left" style="padding-top:3px; padding-right:8px">&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td height="32" align="left" style="padding-top:3px"><span class="txtColor01" style="padding-top:3px">验证码</span></td>
+                            <td height="32" align="left"><input name="yancode" type="text" id="yancode" size="6" maxlength="6" />
+                                <span class="requirefill">*</span><font color=#666666 style="font-size:20px;"><strong><i>
+                                <?=$verfycode?>
+                              </i></strong></font></td>
+                            <td height="32" align="left" style="padding-top:3px; padding-right:8px">&nbsp;</td>
+                          </tr>
+                          <tr>
+                            <td height="32" align="left" style="padding-top:3px">&nbsp;</td>
+                            <td height="32" colspan="2" align="left"><input type="submit" name="button" id="button" value="提交注册"></td>
+                          </tr>
+                        </form>
+                      </table>                        
+                      <p align="center">&nbsp;</p></td>
+  </tr>
+</table>
+</body>
+</html>

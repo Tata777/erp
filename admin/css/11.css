@@ -1,0 +1,49 @@
+.cn {
+	FONT-WEIGHT: normal; FONT-SIZE: 10pt; COLOR: #023065; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+A:unknown {
+	COLOR: #023065; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #023065; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff9900; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #ffcc00; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: #023065; TEXT-DECORATION: none
+}
+
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff9900; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: #ffcc00; TEXT-DECORATION: none
+}
+.cn1 {
+	FONT-WEIGHT: normal; FONT-SIZE: 9pt; COLOR: #000000; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+
+
+typ {
+	FONT-SIZE: 9pt; COLOR: #000000
+}
+.typ {
+	FONT-SIZE: 9pt; COLOR: #023065; FONT-FAMILY: "Verdana", "Arial", "Helvetica", "sans-serif"
+}
+.tabel1 {
+	FONT-SIZE: 9pt; BACKGROUND-IMAGE: url(../images/l.gif); COLOR: #000000
+}
+.tabel {
+	FONT-SIZE: 9pt; COLOR: #ffffff; BACKGROUND-COLOR: #023065
+}
+

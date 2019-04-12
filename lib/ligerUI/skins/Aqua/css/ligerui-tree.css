@@ -1,0 +1,99 @@
+﻿
+/* --------------
+   *   tree  *
+* ------------ */
+
+.l-tree
+{
+    margin:0; padding:0; list-style:none; display:block; color:#FFF;
+} 
+.l-tree-loading
+{
+    position: absolute;z-index: 91000;  top:40%; left:50%; overflow:hidden;
+    background:url('../images/tree/loading.gif') no-repeat 0px 0px;width:24px; height:24px; 
+     display:none;
+}
+
+.l-tree .l-body span
+{
+    display: block;
+    float: left;_display: inherit;_float:none;*display: inherit;*float:none; 
+}
+.l-first .l-body{ background:url(../images/tree/main.png) no-repeat;}
+.l-one .l-body{ background:url(../images/tree/main.png) no-repeat; background-position:0px -82px;}
+.l-two .l-body{ background:url(../images/tree/main.png) no-repeat; background-position: 0px -160px;}
+.l-three .l-body{ background:url(../images/tree/main.png) no-repeat; background-position: 0px -240px;}
+.l-four .l-body{ background:url(../images/tree/main.png) no-repeat; background-position: 0px -328px;}
+.l-five .l-body{ background:url(../images/tree/main.png) no-repeat; background-position: 0px -411px;}
+.l-six .l-body{ background:url(../images/tree/main.png) no-repeat; background-position: 0px -500px;}
+.l-seven .l-body{ background:url(../images/tree/main.png) no-repeat; background-position: 0px -582px;}
+.l-last .l-body{ background:url(../images/tree/main.png) no-repeat; background-position: 0px -658px;}
+.l-tree ul,.l-tree li{list-style:none; margin:0; padding:0; }
+.l-tree li {clear: both;display: block;cursor: pointer; position:relative;}
+.l-tree li .l-body{height:82px;  }
+.l-tree .l-box
+{ display:none;
+    width:22px; height:22px; overflow:hidden; float:left; /*background:url('../images/tree/tree.gif');*/
+}
+.l-tree li .l-body .l-box-loading
+{
+     background:url('../images/tree/nodeloading4.gif') no-repeat 5px 5px; cursor:default;
+}
+.l-tree-noline .l-box
+{
+    background-image:url('../images/tree/tree-noline.gif');
+}
+.l-tree .l-expandable-close{background-position:0px -44px;}
+.l-tree .l-first .l-expandable-close{background-position:0px -22px;}
+.l-tree .l-last .l-expandable-close{ background-position:0px -66px;}
+.l-tree .l-onlychild  .l-expandable-close{background-position:0px 0px;}
+.l-tree li:hover{ background:url(../../../../images/libg.png) right no-repeat;}
+.l-tree .l-expandable-open{background-position:0px -132px;}
+.l-tree .l-first .l-expandable-open{background-position:0px -110px;}
+.l-tree .l-last .l-expandable-open{ background-position:0px -154px;}
+.l-tree .l-onlychild  .l-expandable-open{background-position:0px -88px;}
+.l-tree .l-over span
+{
+    text-decoration:underline;
+}
+/*.l-tree .l-selected
+{
+    background: none;
+}
+.l-tree .l-selected span{background: #D9E8FB; border:1px solid #B5CBEC; padding:0px 2px;height: 20px;
+line-height: 20px;}*/
+.l-link2{ margin-left:2px;margin-right:2px; margin-top:10px; background:url(../images/tree/menu.png) no-repeat; width:20px; height:22px; float:left; background-position:-33px -10px; }
+.l-link3{ margin-left:2px;margin-right:2px; background:url(../images/tree/menu.png) no-repeat; width:30px; height:42px; float:left; background-position:-65px -1px; }
+.l-link4{ margin-left:2px;margin-right:2px; margin-top:10px; background:url(../images/tree/menu.png) no-repeat; width:24px; height:24px; float:left; background-position:-102px -10px; }
+.l-link5{ margin-left:2px;margin-right:2px; margin-top:10px; background:url(../images/tree/menu.png) no-repeat; width:12px; height:24px; float:left; background-position:-136px -10px; }
+.l-link6{ margin-left:2px;margin-right:2px; margin-top:10px; background:url(../images/tree/menu.png) no-repeat; width:24px; height:24px; float:left; background-position:-156px -10px; }
+.l-tree .l-line{background-position:0px -176px;}
+.l-tree .l-note{ background-position:0px -198px;}
+.l-sy{ background:url(../images/tree/menu.png) no-repeat; margin-top:10px; margin-right:2px; width:20px; height:22px; float:left; background-position:0px -10px; }
+.l-first .l-children{width:100px; top:-82px; overflow:hidden; }
+.l-one  .l-children{width:100px; top:-82px; overflow:hidden;}
+.l-two  .l-children{width:100px; top:-82px; overflow:hidden;}
+.l-three  .l-children{width:100px; top:10px; overflow:hidden;}
+.l-four  .l-children{width:100px; top:-5px; overflow:hidden;}
+.l-five  .l-children{width:100px; top:25px; overflow:hidden;}
+.l-six  .l-children{width:100px; top:12px; overflow:hidden;}
+.l-seven  .l-children{width:130px; top:-22px; overflow:hidden;}
+.l-last   .l-children{width:100px; top:22px; overflow:hidden;}
+
+.l-tree .l-note{ background-position:0px -198px;}
+.l-tree .l-note-last{ background-position:0px -220px;}
+.l-tree .l-checkbox-unchecked{ background-position:-22px 0px;} 
+.l-tree .l-checkbox-checked{ background-position:-22px -22px;} 
+.l-tree .l-checkbox-incomplete{ background-position:-22px -44px;} 
+.l-tree .l-over .l-checkbox-unchecked{ background-position:-44px 0px;} 
+.l-tree .l-over .l-checkbox-checked{ background-position:-44px -22px;} 
+.l-tree .l-over .l-checkbox-incomplete{ background-position:-44px -44px;} 
+
+
+.l-tree .l-tree-icon-folder{ background-position:-22px -88px;}
+.l-tree .l-tree-icon-none{ background:none;}
+.l-tree .l-tree-icon-none img{border: 0;height: 16px;width: 16px; top:2px; margin-top:2px; margin-left:2px;}
+.l-tree .l-tree-icon-folder-open{background-position:-44px -88px;}
+.l-tree .l-tree-icon-leaf{background-position:-22px -110px;}
+.l-children{ background:#fff; z-index:9999;  left:95px; border:2px solid #999; border-left:0; position:absolute; }
+.l-children li{ height:30px; color:#FFF; text-indent:12px; line-height:30px;}

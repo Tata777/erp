@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Administrator's Control Panel</title>
+<?php include_once("../common/files.php"); ?>
+</head>
+
+<body id="main">
+<table summary="" id="pagehead" cellpadding="0" cellspacing="0" border="0" width="100%">
+	<tr>
+		<td><h1>评论管理:</h1></td>
+		<td class="actions">
+
+	  </td>
+	</tr>
+</table>
+
+<table width="100%" cellpadding="0" cellspacing="0"  class="listtable">
+  <tr>
+    <th width="10%" height="27">发表人</th>
+    <th width="14%">标题</th>
+    <th width="16%">时间</th>
+    <th width="35%">内容</th>
+    <th width="10%">产品名称</th>
+    <th width="5%">操作</th>
+  </tr>
+<?
+	include_once('../../class/mysqldb.inc.php');
+	$db=new mysqldb();
+	
+	$sql_cnt="select count(ID) as CNT from hy_b_comment ";
+	$db->query($sql_cnt);
+	$rs=$db->get_data();
+	$cm_type_link=array('product'=>"../sysproduct/",'info'=>"../info/");
+	$type_name=array('product'=>"产品",'info'=>"信息");
+
+	$CNT=$rs[0]['CNT'];
+	if($CNT){
+		if(empty($page)){$page=1;}
+		$pagePer=10;
+		$pageNum=ceil($CNT/$pagePer);
+		$pageStar=($page-1)*$pagePer;
+		$sql="select * from hy_b_comment order by CmTime desc Limit $pageStar,$pagePer";
+		//echo $sql;exit;
+		$db->query($sql);
+		$rs=$db->get_data();
+		foreach($rs as $row){ 
+?>  
+  <tr>
+    <td><? if(empty($row['username'])){echo "匿名";}else{echo $row['username'];}?></td>
+    <td><?=$row['Title']?></td>
+    <td><?=$row['CmTime']?></td>
+    <td><?=$row['Content']?></td>
+    <td align="center"><?=$row['ProductName']?></td>
+    <td align="center"><a href="comment_del.php?comID=<?=$row['ID']?>" onclick="return confirm('确认要删除吗?')">删除</a></td>
+  </tr>
+  <? }?>
+</table>
+
+<?php
+			//echo '<div class="comment_t">'.$row['Content'].'</div><div class="comment_b">发表人：<span class="orange">'.$row['Title'].'</span> &nbsp;Email：<span class="orange">'.$row['Email'].'</span> &nbsp;时间：<span class="orange">'.date('Y-s-d',$row['CmTime']).'</span><a href="research_del.php?comID='.$row['ID'].'">删除</a></div> ';		
+
+		//输出分页
+		if($pageNum>1){
+			echo '<div align="right">（共'.$CNT.'条评论）&nbsp;&nbsp;';
+			echo ($page>1)?'<a href="?page='.($page-1).'">上一页</a>':'上一页';
+			echo '&nbsp;&nbsp;';
+			echo ($page<$pageNum)?'<a href="?page='.($page+1).'">下一页</a>':'下一页';
+			echo '&nbsp;&nbsp;转到<select name="pageTo" onchange="location=\'?page=\'+this.value">';
+			for($i=1;$i<=$pageNum;$i++){
+				echo '<option value="'.$i.'" ';
+				echo ($page==$i)?'selected':'';
+				echo '>'.$i.'</option>';
+			}
+			echo '</select>页';
+			echo '</div>'; 
+		}
+		
+	}else{
+		echo "暂无评论!";
+	}
+	
+?>
+
+<br />
+<?php include "../bottom.php"; ?>
+</div>
+
+</body>
+</html>
